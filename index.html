@@ -1,0 +1,697 @@
+<!--ADD: a more "lorenzo" font-->
+<!-- Clean up all code-->
+<!--bold keywords-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Co-op Work Term Report | Portfolio</title>
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Dark Mode & Dynamic Gradient Styling -->
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --card-bg: rgba(22, 27, 46, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-green: #5af7a0;
+      --accent-cyan: #06b6d4;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Gradients (Glowing Blobs) */
+    .gradient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+    }
+    .blob-1 {
+      top: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-green), transparent 70%);
+    }
+    .blob-2 {
+      top: 400px;
+      right: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+    }
+    .blob-3 {
+      top: 1200px;
+      left: -100px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, var(--accent-green), transparent 70%);
+    }
+
+    /* Floating Glassmorphism Cards */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.3s ease-in-out;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 12px 40px 0 rgba(6, 182, 212, 0.15);
+    }
+
+    /* Gradient Text & Accents */
+    .text-gradient {
+      background: linear-gradient(135deg, #5af7a0 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glass Navigation Bar */
+    .navbar-glass {
+      background: rgba(11, 15, 25, 0.75) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .nav-link {
+      color: var(--text-muted) !important;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff !important;
+    }
+
+    /* Section Styling */
+    html {
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: 5rem 0;
+    }
+
+    /* Dark Image Placeholders */
+    .img-placeholder-dark {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: border-color 0.3s ease;
+    }
+    .img-placeholder-dark:hover {
+      border-color: var(--accent-purple);
+    }
+
+    /* Custom Badges */
+    .badge-purple {
+      background: rgba(139, 92, 246, 0.15);
+      color: #5af7a0;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .badge-cyan {
+      background: rgba(6, 182, 212, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar-report" data-bs-offset="100" tabindex="0">
+
+  <!-- Ambient Background Gradients -->
+  <div class="gradient-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Sticky Glass Navigation Bar -->
+  <nav id="navbar-report" class="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-gradient" href="#">Lorenzo Rodriguez</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#abstract">Abstract</a></li>
+          <li class="nav-item"><a class="nav-link" href="#employer">Employer</a></li>
+          <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
+          <li class="nav-item"><a class="nav-link" href="#job-description">Job Description</a></li>
+          <li class="nav-item"><a class="nav-link" href="#conclusions">Conclusions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#acknowledgments">Acknowledgments</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="py-5 text-center position-relative">
+    <div class="container py-4">
+      <span class="badge badge-purple px-3 py-2 mb-3 text-uppercase rounded-pill">Work Term Report I</span>
+      <h1 class="display-3 fw-bold mb-3">
+        Software Engineering <span class="text-gradient">Co-op Reflection</span>
+      </h1>
+      <p class="lead text-secondary max-w-lg mx-auto" style="max-width: 650px;">
+        An overview of technical projects, learning outcomes, and practical experience during my work term.
+      </p>
+      <p class="mb-0 text-secondary small">
+        Most images and screenshots are for illustrative purposes only and may not represent actual company data or systems. All sensitive information has been omitted or anonymized.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Abstract / Introduction Section -->
+    <section id="abstract">
+      <div class="glass-card p-4 p-md-5">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h2 class="fw-bold mb-3 text-gradient">Abstract & Introduction</h2>
+            <p class="lead fw-normal text-secondary">
+              Welcome to my Co-op Work Term Report. This site highlights my key contributions, real-world learning experiences, and professional growth during my Summer 2026 co-op work term.
+            </p>
+            <p class="text-secondary">
+              Since May 2026, I have been working as an IT Service Desk Co-op student at Aurora Cannabis. Throughout this term, I expanded my hardware and software support capabilities, 
+              learned enterprise IT management practices, and contributed to company-wide infrastructure deployments that make a real impact on the company and its employees.
+              While my core position focused on ticket management and resolution, hardware provisioning, and employee onboarding/offboarding, the flexibility of the role allowed me to take 
+              on a variety of responsibilities. I used platforms like ConnectWise Automate and PowerShell to write automation scripts, saving company time and streamlining workflows. 
+              Additionally, I utilized Microsoft Azure, Intune, Exchange Online Admin, and Active Directory to manage employee accounts and devices, deploy software to computers, and manage 
+              email flows. This report covers my technical contributions, project work, and personal reflections from my time so far at Aurora.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <!-- Clickable Thumbnail Container -->
+            <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+              <img 
+                src="./assets/aurora-nordic-facility.jpeg" 
+                alt="Grow facility Aurora Nordic, in Denmark" 
+                class="img-fluid rounded w-100" 
+                style="max-height: 300px; object-fit: cover; cursor: pointer;"
+              >
+              <!-- Overlay Badge -->
+              <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                Click to enlarge
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Information about the Employer -->
+    <section id="employer">
+      <div class="glass-card p-4 p-md-5">
+        <!-- Top Row: Text & Image -->
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5 order-lg-2">
+            <!-- Clickable Thumbnail Container -->
+            <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+              <img 
+                src="./assets/aurora-logo.jpg" 
+                alt="Grow facility Aurora Nordic, in Denmark" 
+                class="img-fluid rounded w-100" 
+                style="max-height: 300px; object-fit: cover; cursor: pointer;"
+              >
+              <!-- Overlay Badge -->
+              <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                Click to enlarge
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-7 order-lg-1">
+            <h2 class="fw-bold mb-3 text-gradient-cyan">Employer Overview</h2>
+            <p class="text-secondary">
+              Aurora Cannabis is a global leader in the medicinal cannabis industry, with thousands of employees spread across 7 different countries. Advanced research and scientific innovation 
+              drives the company to develop a diverse medical portfolio focusing on strain-specific and blended formulations offered in THC, CBD, and balanced ratios.
+            </p>
+            <p class="text-secondary mb-0">
+              At Aurora, computing and IT infrastructure power everything from the computers our scientists use to develop cutting edge strains, to the systems that manage our global supply chain and ensure data security.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Row: 3 Feature Tiles spanning full width below text and image -->
+        <div class="row g-3 mt-4">
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100">
+              <h5 class="fw-bold text-light">Hardware & Endpoint Provisioning</h5>
+              <p class="small text-secondary mb-0">
+                Managing the lifecycle of employee hardware, provisioning laptops, desktops, and workstations configured for staff across the company.
+                Various scripting languages and platforms are used to automate software installation, configuration, and account management for employees.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100">
+              <h5 class="fw-bold text-light">Supply Chain & Enterprise Systems</h5>
+              <p class="small text-secondary mb-0">
+                Enterprise resource planning (ERP) systems enable real-time inventory tracking, global supply chain logistics, and strict SOX compliance reporting.
+                Sage X3 is the primary ERP system used to manage inventory, production, and distribution across multiple international locations.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card p-3 h-100">
+              <h5 class="fw-bold text-light">Infrastructure, Servers & Storage</h5>
+              <p class="small text-secondary mb-0">
+                Maintaining enterprise IT equipment including NetApp storage clusters, physical/virtual servers, and secure network infrastructure connecting international locations.
+                These systems allow Aurora to manage and secure sensitive data, host internal applications, and provide remote access to employees across the globe.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals">
+      <div class="glass-card p-4 p-md-5">
+        <h2 class="fw-bold mb-3 text-gradient text-center">Work Term Goals</h2>
+        <p class="text-secondary text-center mb-5 mx-auto" style="max-width: 650px;">
+          These learning objectives were set at the start of the term and have been evaluated upon completion:
+        </p>
+
+        <div class="d-flex flex-column gap-4">
+
+  <!-- Goal 1 -->
+  <div class="glass-card p-4">
+    <div class="row align-items-center g-4">
+      
+      <!-- Content Column -->
+      <div class="col-lg-8">
+        
+        <!-- Header / Status Badge -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge bg-success-subtle text-success border border-success fw-semibold">Completed</span>
+        </div>
+
+        <!-- Title -->
+        <h4 class="fw-bold text-light mb-3">Technical Proficiency in ConnectWise Automate and ScreenConnect</h4>
+
+        <!-- Goal Statement -->
+        <div class="p-3 bg-dark bg-opacity-25 rounded border border-secondary border-opacity-25 mb-4">
+          <p class="text-light mb-0">
+            <strong>Goal: Complete ConnectWise university training and practice using the software in order to become proficient in remote device management and analyzing computer information before reaching out to users.</strong>
+          </p>
+        </div>
+
+        <!-- Narrative Paragraph -->
+        <p class="text-secondary mb-3">
+          I completed ConnectWise training and used connectwise to troubleshoot issue with users onm a daily basis. This not only improved my problem-solving skills but also enhanced my ability to provide efficient support. I also developed a variety of scripts to automate routine tasks:
+        </p>
+
+        <!-- Structured Script List -->
+        <ul class="text-secondary ps-3 mb-0 d-flex flex-column gap-2">
+          <li>
+            I resolved an issue with our FSM Log Agent installation script by creating a script that executes silent PowerShell installation steps without requiring user UI interaction.
+          </li>
+          <li>
+            I also updated a Sage Enterprise Intelligence (SEI) installation script that dynamically detects a user's OneDrive path via PowerShell to place required LabTech configuration files correctly.
+          </li>
+          <li>
+            Additionally, I built an Azure application package to automate Adobe Acrobat Pro upgrades, ensuring legacy Acrobat installations are stripped and replaced smoothly upon user sign-in.
+          </li>
+          <li>
+            Finally, I reverse-engineered an undocumented vendor VBScript used for Sage X3 reporting, converting it into a structured PowerShell script that reformats .xlsx files into specific .txt data files (YGAS/ZGAS formats) for Sage X3 imports.
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="col-lg-4">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+              <img 
+                src="./assets/automate-sample.jpg" 
+                alt="Grow facility Aurora Nordic, in Denmark" 
+                class="img-fluid rounded w-100" 
+                style="max-height: 300px; object-fit: cover; cursor: pointer;"
+              >
+              <!-- Overlay Badge -->
+              <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                Click to enlarge
+              </div>
+            </a>
+          </div>
+    </div>
+  </div>
+
+</div>
+
+          <!-- Goal 2 -->
+          <div class="glass-card p-4">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-success-subtle text-success border border-success fw-semibold">Completed</span>
+                </div>
+                <h4 class="fw-bold text-light mb-3">ServiceNow Ticket Management and Documentation</h4>
+
+                <!-- Goal Statement -->
+                <div class="p-3 bg-dark bg-opacity-25 rounded border border-secondary border-opacity-25 mb-4">
+                  <p class="text-light mb-0">
+                    <strong>Goal: Effectively use the ServiceNow platform to create, manage and resolve IT incident tasks and service tasks.</strong>
+                  </p>
+                </div>
+
+                <p class="text-secondary mb-3">
+                  I developed an efficient workflow within ServiceNow to ensure urgent tickets were prioritized, and in progress tickets were resolved in a timely manner:
+                </p>
+
+                <ul class="text-secondary ps-3 mb-3 d-flex flex-column gap-2">
+                  <li>
+                    Began each shift reviewing the main queue for urgent tickets
+                  </li>
+                  <li>
+                    Worked through and followed up with my in-progress tickets
+                  </li>
+                  <li>
+                    Processed pending software access requests for various systems (Sage X3, SEI, CoPilot, etc.)
+                  </li>
+                  <li>
+                    Monitored incoming requests while working on automation scripts
+                  </li>
+                </ul>
+
+                <p class="text-secondary mb-0">
+                  I also created several Knowledge Base (KB) articles documenting standard procedures, including autopilot laptop provisioning steps, and software installation steps to assist future onboarding team members.
+                </p>
+
+              </div>
+              <div class="col-lg-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+                  <div class="img-placeholder-dark w-100" style="min-height: 220px;">
+                    <span>[ ServiceNow / KB Article Screenshot ]</span>
+                  </div>
+                  <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                    Click to enlarge
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goal 3 -->
+          <div class="glass-card p-4">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-success-subtle text-success border border-success fw-semibold">Completed</span>
+                </div>
+                <h4 class="fw-bold text-light mb-3">Hardware/Software Troubleshooting</h4>
+
+                <!-- Goal Statement -->
+                <div class="p-3 bg-dark bg-opacity-25 rounded border border-secondary border-opacity-25 mb-4">
+                  <p class="text-light mb-0">
+                    <strong>Goal: I will develop a structured IT troubleshooting process to solve technical tickets independently by the end of my co-op term, reducing reliance on senior team members.</strong>
+                  </p>
+                </div>
+
+                <p class="text-secondary mb-3">
+                  I used a six-step diagnostic process for each technical issue that I came across, isolating variables by changing one setting at a time rather than relying on trial and error. Key outcomes of this approach included:
+                </p>
+
+                <ul class="text-secondary ps-3 mb-3 d-flex flex-column gap-2">
+                  <li>
+                    Maintained detailed escalation notes to ensure thorough documentation across ticket handoffs
+                  </li>
+                  <li>
+                    Shadowed senior team members to accelerate technical proficiency and workflow learning
+                  </li>
+                  <li>
+                    Built confidence to handle incoming support tickets independently, cutting down reliance on senior staff
+                  </li>
+                  <li>
+                    Kept ticket queues clean and resolved issues efficiently
+                  </li>
+                </ul>
+                
+              </div>
+              <div class="col-lg-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+                  <div class="img-placeholder-dark w-100" style="min-height: 220px;">
+                    <span>[ Troubleshooting Workflow Image ]</span>
+                  </div>
+                  <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                    Click to enlarge
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goal 4 -->
+          <div class="glass-card p-4">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-success-subtle text-success border border-success fw-semibold">Completed</span>
+                </div>
+                <h4 class="fw-bold text-light mb-3">Safari BOS Project</h4>
+
+                <!-- Goal Statement -->
+                <div class="p-3 bg-dark bg-opacity-25 rounded border border-secondary border-opacity-25 mb-4">
+                  <p class="text-light mb-0">
+                    <strong>Goal: Manage the Active Directory account onboarding and device provisioning process for contractors to complete the Safari BOS (beginning of service) project company expansion.</strong>
+                  </p>
+                </div>
+
+                <p class="text-secondary mb-0">
+                  I managed the Active Directory account setup and hardware provisioning for approximately 20 new contractors during 
+                  the Safari Flower Co. acquisition. Working against tight business deadlines, I configured devices to ensure all users
+                  could log in seamlessly at their site in Niagara. Later in the term, leadership decided to transition this group to 
+                  a third-party managed provider, but completing the initial wave gave me valuable experience in fast-paced acquisition rollouts.
+                </p>
+              </div>
+              <div class="col-lg-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+                  <div class="img-placeholder-dark w-100" style="min-height: 220px;">
+                    <span>[ Provisioning / AD Screenshot ]</span>
+                  </div>
+                  <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                    Click to enlarge
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goal 5 -->
+          <div class="glass-card p-4">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-warning-subtle text-warning border border-warning fw-semibold">In Progress</span>
+                </div>
+                <h4 class="fw-bold text-light mb-3">Evergreen Project Deployment and Hardware Provisioning</h4>
+
+                <!-- Goal Statement -->
+                <div class="p-3 bg-dark bg-opacity-25 rounded border border-secondary border-opacity-25 mb-4">
+                  <p class="text-light mb-0">
+                    <strong>Goal: Successfully provision, configure, and deploy ~170 replacement laptops for the company's aging employee hardware by the Fall 2026 deadline.</strong>
+                  </p>
+                </div>
+
+                <p class="text-secondary mb-0">
+                  This multi-department initiative aimed to replace ~170 aging employee devices (such as older Lenovo T440s, Surface Books,
+                  and T14s laptops). The project experienced delays while waiting for hardware procurement approvals. My team successfully
+                  imaged and deployed around 50 replacement devices before the project scope was adjusted to focus exclusively on systems
+                  unable to run Windows 11. Procurement picked back up in mid-September, and device processing is ongoing.
+                </p>
+              </div>
+              <div class="col-lg-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" class="d-block position-relative text-decoration-none image-hover-container">
+                  <div class="img-placeholder-dark w-100" style="min-height: 220px;">
+                    <span>[ Hardware Lifecycle Image ]</span>
+                  </div>
+                  <div class="hover-overlay position-absolute top-0 start-0 w-100 h-100 rounded d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white fw-bold">
+                    Click to enlarge
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Description Section -->
+    <section id="job-description">
+      <div class="glass-card p-4 p-md-5">
+        <h2 class="fw-bold mb-3 text-gradient">Job Description & Projects</h2>
+        <p class="lead fw-normal text-secondary">
+          An overview of core development tasks, operational responsibilities, and technologies used daily.
+        </p>
+
+        <div class="row g-4 mt-2">
+          <div class="col-lg-8">
+            <p class="text-secondary">
+              My daily responsibilities centered around ticket resolution, endpoint troubleshooting, and
+               workspace provisioning, alongside scripting work and infrastructure maintenance. A unique
+                aspect of this role was constructing custom desktop workstations for site security systems
+                 and performing physical upgrades, such as RAM installations, alongside software support.
+            </p>
+            <p class="text-secondary">
+              I drew directly on my software design and programming coursework from university to write 
+              automation scripts. Applying these concepts required adapting to ConnectWise Automate, which 
+              executes scripts through discrete logic steps rather than a traditional monolithic editor, as
+               well as writing raw PowerShell and Shell scripts. While my previous customer service experience
+                at Telus provided a solid foundation in communication and basic ticketing workflows, working 
+                on the internal IT side at Aurora gave me a practical understanding of enterprise system 
+                administration, tenant management, and user access policies.
+            </p>
+            <p class="text-secondary">
+              One of the highlights of the term was visiting local production and network infrastructure
+               facilities across Ontario, including sites in Bradford, Markham, and Brampton. Seeing 
+               the physical grow rooms, server closets, and automation systems put my daily desk work 
+               into perspective. Seeing employees using the equipment I had imaged and shipped out directly
+                connected my technical tasks to the company's broader day-to-day operations.
+
+            <h5 class="fw-bold text-light mt-4 mb-3">Stack & Tools</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-purple p-2">Python</span>
+              <span class="badge badge-purple p-2">React / JS</span>
+              <span class="badge badge-purple p-2">Docker</span>
+              <span class="badge badge-cyan p-2">REST APIs</span>
+              <span class="badge badge-cyan p-2">Git / GitHub</span>
+              <span class="badge badge-cyan p-2">Linux</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="img-placeholder-dark h-100">
+              <span>[ Project Screenshot ]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusions Section -->
+    <section id="conclusions">
+      <div class="glass-card p-4 p-md-5 border-start border-4 border-purple">
+        <h2 class="fw-bold mb-3 text-gradient">Conclusions</h2>
+        <p class="text-secondary">
+          This co-op term provided strong practical experience at the intersection of technical support, automation, and 
+          enterprise IT management. Working in the medicinal cannabis industry cleared away any preconceived stigmas; 
+          behind the specialized agricultural technology, Aurora operates with the scale, security requirements, and 
+          operational rigor of any global corporate enterprise. I thoroughly enjoyed solving practical technical problems, 
+          automating repetitive tasks to save staff time, and supporting employees across Canada and international offices 
+          in Australia, Europe, and Asia.
+        </p>
+        <p class="text-secondary mb-0">
+          I would like to thank my manager, the IT Service Desk team, and my co-workers at Aurora Cannabis for their 
+          guidance, technical insights, and ongoing support throughout my work term.
+        </p>
+      </div>
+    </section>
+
+    <!-- Acknowledgments Section -->
+    <section id="acknowledgments">
+      <div class="glass-card p-4 p-md-5">
+        <h2 class="fw-bold mb-3 text-gradient-cyan">Acknowledgments</h2>
+        <p class="text-secondary">
+          Thank you to my team lead, co-workers, and the University of Guelph Co-op department for making this work term a valuable learning experience.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center text-secondary border-top border-secondary border-opacity-10 mt-5">
+    <div class="container">
+      <small>&copy; 2026 Work Term Portfolio. Built with Bootstrap 5 & CSS Glassmorphism.</small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JavaScript Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+
+<!-- Dynamic Image Pop-up Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0 text-center">
+        <img 
+          id="modalDynamicImage"
+          src="" 
+          alt="" 
+          class="img-fluid rounded shadow-lg"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap 5 JavaScript Bundle CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- Script to dynamically load image source into the Modal -->
+<script>
+  const imageModal = document.getElementById('imageModal');
+  if (imageModal) {
+    imageModal.addEventListener('show.bs.modal', function (event) {
+      const triggerElement = event.relatedTarget;
+      const imgInside = triggerElement.querySelector('img');
+      const modalImg = document.getElementById('modalDynamicImage');
+        
+      if (imgInside && modalImg) {
+        modalImg.src = imgInside.src;
+        modalImg.alt = imgInside.alt;
+      }
+    });
+  }
+</script>
+
+<style>
+  .hover-overlay {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .image-hover-container:hover .hover-overlay {
+    opacity: 1;
+  }
+</style>
+
+</html>
